@@ -155,3 +155,42 @@ class VWorldSatMapProvider : public MapProvider {
   private:
     const QString _versionBingMaps = QStringLiteral("563");
 };
+
+// 高德卫星地图
+class GaodeSatMapProvider : public MapProvider {
+    Q_OBJECT
+public:
+    GaodeSatMapProvider(QObject* parent = nullptr)
+        : MapProvider(QStringLiteral("webapi.amap.com"), QStringLiteral("jpg"),
+                      AVERAGE_TILE_SIZE, QGeoMapType::SatelliteMapDay, parent) {}
+
+    QString _getURL(const int x, const int y, const int zoom, QNetworkAccessManager* networkManager) override;
+private:
+    const QString _versionBingMaps = QStringLiteral("563");
+};
+
+// 高德公路地图
+class GaodeRoadSatMapProvider : public MapProvider {
+    Q_OBJECT
+public:
+    GaodeRoadSatMapProvider(QObject* parent = nullptr)
+        : MapProvider(QStringLiteral("webapi.amap.com"), QStringLiteral("jpg"),
+                      AVERAGE_TILE_SIZE, QGeoMapType::SatelliteMapDay, parent) {}
+
+    QString _getURL(const int x, const int y, const int zoom, QNetworkAccessManager* networkManager) override;
+private:
+    const QString _versionBingMaps = QStringLiteral("563");
+};
+
+// 高德混合卫星地图
+class GaodeHybridSatMapProvider : public MapProvider {
+    Q_OBJECT
+public:
+    GaodeHybridSatMapProvider(QObject* parent = nullptr)
+        : MapProvider(QStringLiteral("webapi.amap.com"), QStringLiteral("jpg"),
+                      AVERAGE_TILE_SIZE, QGeoMapType::SatelliteMapDay, parent) {}
+
+    QString _getURL(const int x, const int y, const int zoom, QNetworkAccessManager* networkManager) override;
+private:
+    const QString _versionBingMaps = QStringLiteral("563");
+};

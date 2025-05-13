@@ -7,6 +7,10 @@
 #
 ################################################################################
 
+CONFIG += warn_off
+QMAKE_CXXFLAGS += -D_CRT_SECURE_NO_WARNINGS
+
+
 QMAKE_PROJECT_DEPTH = 0 # undocumented qmake flag to force absolute paths in makefiles
 
 # These are disabled until proven correct

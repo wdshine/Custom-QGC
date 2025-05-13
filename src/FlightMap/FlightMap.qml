@@ -142,4 +142,43 @@ Map {
             }
         }
     }
+
+    // 将中心点、缩放级别等状态绑定到路网地图
+    onCenterChanged:        roadMap.center = center
+    onZoomLevelChanged:      roadMap.zoomLevel = zoomLevel
+    onBearingChanged:        roadMap.bearing = bearing
+    onTiltChanged:           roadMap.tilt = tilt
+
+    // 高德路网叠加层（独立图层）
+    Map {
+        id: roadMap
+        anchors.fill: parent
+        plugin: Plugin { name: "QGroundControl" }
+        color: "transparent"    // 设置背景透明
+        opacity: 1              // 设置路网透明度
+        gesture.enabled: false // 禁止手势操作，避免冲突
+        visible: _map.activeMapType.name === "高德 混合地图"
+        onMapReadyChanged: {
+            if (roadMap.mapReady) {
+                var targetType = null;
+                for (var i = 0; i < roadMap.supportedMapTypes.length; i++) {
+                    if (roadMap.supportedMapTypes[i].name === "高德 路网地图") {
+                        targetType = roadMap.supportedMapTypes[i];
+                        break;
+                    }
+                }
+                if (targetType) {
+                    roadMap.activeMapType = targetType;
+                } else {
+                    console.warn("未找到匹配的地图类型: 高德 路网地图");
+                }
+            }
+        }
+        // 同步主地图状态
+        center: _map.center
+        zoomLevel: _map.zoomLevel
+        bearing: _map.bearing
+        tilt: _map.tilt
+    }
+
 } // Map

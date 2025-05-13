@@ -135,3 +135,18 @@ QString VWorldSatMapProvider::_getURL(const int x, const int y, const int zoom, 
             .arg(_getServerNum(x, y, 4)).arg(key, _versionBingMaps, _language);
     }
 }
+
+QString GaodeSatMapProvider::_getURL(const int x, const int y, const int zoom, QNetworkAccessManager* networkManager) {
+    Q_UNUSED(networkManager)
+    return QStringLiteral("http://wprd01.is.autonavi.com/appmaptile?x=%1&y=%2&z=%3&lang=zh_cn&size=1&scl=1&style=6&key=5fb57ec4d91f7ec0b33184ea5a6cd004").arg(x).arg(y).arg(zoom);//卫星影像
+}
+
+QString GaodeRoadSatMapProvider::_getURL(const int x, const int y, const int zoom, QNetworkAccessManager* networkManager) {
+    Q_UNUSED(networkManager)
+    return QStringLiteral("http://wprd01.is.autonavi.com/appmaptile?x=%1&y=%2&z=%3&lang=zh_cn&size=1&scl=1&style=8&key=5fb57ec4d91f7ec0b33184ea5a6cd004").arg(x).arg(y).arg(zoom);//路网加注记
+}
+
+QString GaodeHybridSatMapProvider::_getURL(const int x, const int y, const int zoom, QNetworkAccessManager* networkManager) {
+    Q_UNUSED(networkManager)
+    return QStringLiteral("http://wprd01.is.autonavi.com/appmaptile?x=%1&y=%2&z=%3&lang=zh_cn&size=1&scl=1&style=6&key=5fb57ec4d91f7ec0b33184ea5a6cd004").arg(x).arg(y).arg(zoom);//卫星影像
+}
