@@ -7,6 +7,12 @@
  *
  ****************************************************************************/
 
+// 管理仪表值显示逻辑的核心数据模型类
+// 包含仪表值的分组、名称、值、文本、单位、图标、颜色、不透明度等属性
+// 通过 factGroupName 和 factName 属性绑定飞机Fact
+// 通过 _activeVehicle 成员关联当前活动飞机
+// 自动监听飞机Fact组变化（通过 _lookForMissingFact 方法）
+
 #pragma once
 
 #include "FactSystem.h"

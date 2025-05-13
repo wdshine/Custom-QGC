@@ -7,6 +7,34 @@
  *
  ****************************************************************************/
 
+// MAVLinkProtocol类：
+//  1. MAVLink协议版本管理
+//  - 支持MAVLink v1和v2协议（ setVersion 方法）
+//  - 处理版本兼容性检查（ m_enable_version_check 标志）
+//  - 通过 mavlink_status_t 结构维护通道状态
+//  2. 通信链路管理
+//  - 与 LinkManager 集成管理多个物理链路
+//  - 维护每个链路的通信统计（丢包率、收发计数器等）
+//  - 通过 resetMetadataForLink 重置链路元数据
+//  3. 消息处理
+//  - 实现 receiveBytes 处理接收字节流，解析MAVLink消息
+//  - 通过 messageReceived 信号转发解码后的消息
+//  - 记录发送的字节流（ logSentBytes 方法）
+//  4. 系统标识管理
+//  - 维护GCS系统ID（ systemId 属性）
+//  - 处理组件ID分配（ getComponentId 方法）
+//  5. 诊断日志
+//  - 创建临时日志文件（ _tempLogFile ）
+//  - 支持暂停日志记录（ suspendLogForReplay 方法）
+//  - 自动保存遥测日志（ saveTelemetryLog 信号）
+//  6. 状态监控
+//  - 通过 radioStatusChanged 信号报告无线电状态
+//  - 统计消息丢失率（ runningLossPercent 数组）
+//  - 维护首次消息标记（ firstMessage 数组）
+//  7. 多飞行器支持
+//  - 与 MultiVehicleManager 集成处理多机通信
+//  - 通过 vehicleHeartbeatInfo 信号传递心跳信息
+
 #pragma once
 
 #include <QObject>

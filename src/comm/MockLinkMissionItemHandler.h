@@ -7,6 +7,23 @@
  *
  ****************************************************************************/
 
+//  1. MAVLink任务协议模拟
+//  - 处理MAV_MISSION_XXX系列消息（如MISSION_REQUEST_LIST/MISSION_ITEM等）
+//  - 维护三种任务类型的状态： MAV_MISSION_TYPE_MISSION （航点）、 MAV_MISSION_TYPE_FENCE （地理围栏）、 MAV_MISSION_TYPE_RALLY （集结点）
+//  - 实现任务项的存储管理（通过_missionItems/_fenceItems/_rallyItems容器）
+//  2. 单元测试支持
+//  - 提供多种故障模拟模式（通过FailureMode_t枚举），例如：
+//  - 支持异常场景测试（如超时、错误ACK、序列号错误等）
+//  3. 协议状态管理
+//  - 跟踪任务传输状态：
+//  - 处理任务清除指令（_handleMissionClearAll）
+//  4. 与MockLink集成
+//  - 作为MockLink的子系统运行（通过_mockLink指针关联）
+//  - 响应消息后通过 _mockLink->respondWithMavlinkMessage() 回传MAVLink消息
+//  该类通过模拟真实飞行控制器的任务管理行为，
+//  为QGC的MissionManager等模块提供了完整的端到端测试能力；
+//  核心设计目标是验证任务协议在各种异常网络条件下的鲁棒性，
+//  以及确保QGC的任务管理功能与不同飞控固件的兼容性。
 
 #pragma once
 

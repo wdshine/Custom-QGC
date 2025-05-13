@@ -7,6 +7,23 @@
  *
  ****************************************************************************/
 
+//  1. 协议模拟
+//  - 实现MAVLink FTP服务端逻辑，处理文件列表请求、文件读取、会话管理等操作
+//  - 支持标准FTP操作码（kCmdListDirectory/kCmdOpenFileRO/kCmdReadFile等）
+//  - 通过 `MockLinkFTP.cc` 中的处理逻辑模拟真实设备行为
+// 2. 测试支持
+//  - 支持多种错误模式（errModeNoResponse/errModeNakResponse等），用于验证客户端的错误恢复能力
+//  - 在 `FileManagerTest.cc` 中用于测试文件列表获取、断点续传等场景
+//  - 通过设置随机丢包(_randomDropsEnabled)测试网络异常情况
+// 3. 数据管理
+//  - 维护虚拟文件系统(_fileList)，支持动态创建测试文件(_createTestTempFile)
+//  - 处理文件会话状态(_sessionId)，管理文件读写指针位置(_currentFile)
+//  - 支持特殊文件路径处理（如@PARAM/param.pck二进制参数文件）
+// 4. 消息处理
+//  - 在 `mavlinkMessageReceived` 中解析MAVLink消息
+//  - 生成符合协议规范的ACK/NAK响应(_sendResponse/_sendNak)
+
+// 通过模拟真实设备的FTP协议，使得QGC的FTPManager、FileManager等模块可以在不依赖真实硬件的情况下进行单元测试。
 
 #pragma once
 

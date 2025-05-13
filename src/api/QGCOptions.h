@@ -16,6 +16,7 @@
 
 class QGCOptions;
 
+// 控制飞行视图(Fly View)的界面元素
 class QGCFlyViewOptions : public QObject
 {
     Q_OBJECT
@@ -44,6 +45,14 @@ signals:
     void guidedBarShowOrbitChanged              (bool show);
     void guidedBarShowROIChanged                (bool show);
 };
+
+// 作为全局配置管理核心类，通过 Q_PROPERTY 暴露大量应用程序级配置选项
+// 控制以下功能开关：
+// - 传感器校准页面的可见性（罗盘/陀螺仪/加速度计等）
+// - 固件升级功能可见性
+// - 多飞行器支持开关
+// - 离线地图导入导出功能
+// - 任务规划相关功能（绝对高度显示等）
 
 class QGCOptions : public QObject
 {

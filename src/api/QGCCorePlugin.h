@@ -40,6 +40,25 @@ class QGCCameraControl;
 class QQuickItem;
 class InstrumentValueAreaController;
 
+// QGCCorePlugin类的作用：
+// 1. 系统基础服务管理
+// - 作为QGCToolbox的核心组件，负责初始化和管理视频管理、地图引擎、MAVLink协议等基础服务
+// - 通过 createVideoManager / createVideoReceiver 等方法控制多媒体组件的创建
+// 2. 配置管理系统
+// - 通过 settingsPages() 方法构建并管理设置菜单结构（通用设置/通信链路/离线地图等）
+// - 支持自定义设置项可见性控制（ overrideSettingsGroupVisibility ）
+// 3. UI框架控制
+// - 控制高级UI显示状态（showAdvancedUI属性）
+// - 管理触摸区域显示（showTouchAreas属性）
+// - 提供自定义地图项集成接口（customMapItems）
+// 4. 扩展支持机制
+// - 通过 mavlinkMessage 方法实现MAVLink消息拦截处理
+// - 支持自定义复杂任务项（complexMissionItemNames）
+// - 提供插件化视频接收/渲染接口（createVideoSink等）
+// 5. 版本更新管理
+// - 控制stable版本检测机制（stableVersionCheckFileUrl）
+// - 管理首次运行提示系统（firstRunPrompt系列方法）
+
 class QGCCorePlugin : public QGCTool
 {
     Q_OBJECT

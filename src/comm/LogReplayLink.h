@@ -7,6 +7,11 @@
  *
  ****************************************************************************/
 
+// LogReplayLinkConfiguration负责持久化存储日志文件路径
+// LogReplayLink根据配置加载指定日志文件，实现精确回放
+// 两者共同实现日志回放功能，回放过程中通过QThread实现多线程，避免阻塞UI线程
+// 通过信号机制（如playbackPercentCompleteChanged）实现UI状态同步
+
 #pragma once
 
 #include "MAVLinkProtocol.h"

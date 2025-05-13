@@ -7,6 +7,9 @@
  *
  ****************************************************************************/
 
+// 参数数值及单位显示
+// 与InstrumentValueData类绑定
+
 import QtQuick          2.12
 import QtQuick.Layouts  1.2
 import QtQuick.Controls 2.5
