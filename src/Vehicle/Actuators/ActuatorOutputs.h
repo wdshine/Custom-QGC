@@ -7,6 +7,9 @@
  *
  ****************************************************************************/
 
+//  协同实现无人机执行器输出参数的层级化配置，通过QmlObjectListModel实现QML数据绑定
+//  支持动态界面生成和参数验证机制
+
 #pragma once
 
 #include <QObject>
@@ -24,6 +27,7 @@ namespace ActuatorOutputs {
 /**
  * Config parameters that apply to a subgroup of actuators
  */
+// 封装执行器输出组的配置参数，支持使能开关/主参数控制，通过Function枚举区分参数类型
 class ConfigParameter : public QObject
 {
     Q_OBJECT
@@ -53,6 +57,7 @@ private:
 /**
  * Config parameters that apply to individual channels
  */
+// 定义单通道参数配置规则，包含功能类型（输出函数/最小值等）和可见性条件，支持动态界面显隐控制
 class ChannelConfig : public QObject
 {
     Q_OBJECT
@@ -99,6 +104,7 @@ private:
 /**
  * Per-channel instance for a ChannelConfig
  */
+// 实例化ChannelConfig配置，绑定具体参数事实(Fact)，实现参数配置的实例级管理
 class ChannelConfigInstance : public QObject
 {
     Q_OBJECT
@@ -119,6 +125,7 @@ private:
     ChannelConfig& _config;
 };
 
+// 管理单个输出通道的配置实例集合，维护通道标签和参数索引映射
 class ActuatorOutputChannel : public QObject
 {
     Q_OBJECT
@@ -143,6 +150,7 @@ private:
     QmlObjectListModel* _configInstances = new QmlObjectListModel(this); ///< list of ChannelConfigInstance*
 };
 
+// 组织执行器输出子组，包含通道列表/配置参数/动作定义，支持嵌套子组结构
 class ActuatorOutputSubgroup : public QObject
 {
     Q_OBJECT
@@ -188,6 +196,7 @@ private:
     QList<ActuatorActions::Config> _actions;
 };
 
+// 顶层执行器输出配置容器，管理子组结构/全局参数/备注信息，实现分组可见性条件评估
 class ActuatorOutput : public QObject
 {
     Q_OBJECT

@@ -7,6 +7,9 @@
  *
  ****************************************************************************/
 
+//  CompInfo作为基类提供通用的元数据管理
+//  CompInfoGeneral作为派生类处理飞控主组件（MAV_COMP_ID_AUTOPILOT1）等的元数据细节
+
 #pragma once
 
 #include "CompInfo.h"

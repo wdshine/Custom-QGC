@@ -7,6 +7,8 @@
  *
  ****************************************************************************/
 
+//  共同实现无人机执行器的快速配置功能，支持通过地面站界面批量执行电机方向设置/蜂鸣测试等操作
+
 #pragma once
 
 #include <QObject>
@@ -18,6 +20,7 @@
 
 namespace ActuatorActions {
 
+// 定义执行器配置动作类型枚举，包含蜂鸣/3D模式/旋转方向等操作类型，提供类型到界面标签的转换方法
 struct Config {
     enum class Type {
         beep = ACTUATOR_CONFIGURATION_BEEP,                            ///< beep actuator
@@ -34,6 +37,7 @@ struct Config {
     QSet<QString> actuatorTypes;
 };
 
+// 实现单个执行器动作的触发逻辑，通过MAVLink协议发送 MAV_CMD_ACTUATOR_CONFIGURATION 指令，处理飞控响应
 class Action : public QObject
 {
     Q_OBJECT
@@ -60,6 +64,7 @@ private:
     bool _commandInProgress{false};
 };
 
+// 组织相关执行器动作集合（如电机方向设置组），通过 QmlObjectListModel 暴露给QML界面实现动作分组管理
 class ActionGroup : public QObject
 {
     Q_OBJECT

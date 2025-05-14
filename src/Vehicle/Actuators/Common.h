@@ -7,6 +7,8 @@
  *
  ****************************************************************************/
 
+ // 多个类协同实现无人机执行器参数的可视化配置，支持动态界面生成、参数校验和三维布局预览功能
+
 #pragma once
 
 
@@ -25,6 +27,7 @@ Q_DECLARE_LOGGING_CATEGORY(ActuatorsConfigLog)
 /**
  * Represents a per-channel or per-item vehicle configuration parameter
  */
+// 定义执行器配置参数的元数据，支持位操作、浮点转布尔等特殊显示方式，用于动态生成参数配置界面
 struct Parameter {
     enum class DisplayOption {
         Default,
@@ -123,6 +126,7 @@ private:
 /**
  * Actuator used for rendering
  */
+// 存储执行器（电机、舵机）的几何布局信息，用于可视化引擎渲染无人机结构
 struct ActuatorGeometry
 {
     enum class Type {

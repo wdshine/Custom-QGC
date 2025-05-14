@@ -19,7 +19,7 @@
 #include "GeometryImage.h"
 #include "MotorAssignment.h"
 
-
+// 作为执行器系统的总控类，整合了配置、测试、混控和可视化等功能
 class Actuators : public QObject
 {
     Q_OBJECT

@@ -1,3 +1,16 @@
+/****************************************************************************
+ *
+ * (c) 2009-2020 QGROUNDCONTROL PROJECT <http://www.qgroundcontrol.org>
+ *
+ * QGroundControl is licensed according to the terms in the file
+ * COPYING.md in the root of the source code directory.
+ *
+ ****************************************************************************/
+
+// 处理地形高程数据，支持从文件或网络加载数据，快速查询任意坐标的高程，并统计地形特征
+
+ #pragma once
+
 #ifndef TERRAINTILE_H
 #define TERRAINTILE_H
 

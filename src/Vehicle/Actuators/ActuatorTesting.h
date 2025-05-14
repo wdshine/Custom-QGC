@@ -20,6 +20,12 @@
 
 namespace ActuatorTesting {
 
+// Actuator类 (执行器参数模型)  
+// - 封装单个执行器（电机/舵机）的配置参数
+// - 定义参数范围（min/max）和默认值
+// - 通过Q_PROPERTY绑定到QML界面
+// - 区分电机与非电机执行器（isMotor属性）
+
 class Actuator : public QObject
 {
     Q_OBJECT
@@ -50,6 +56,14 @@ private:
     const int _function;
     const bool _isMotor;
 };
+
+// ActuatorTest类 (执行器测试控制器)
+// - 管理所有执行器的测试流程
+// - 通过QmlObjectListModel维护执行器列表
+// - 实现MAVLink协议指令交互：
+// - 安全控制机制：
+//   - 自动停止超时操作（watchdogTimeout）
+//   - 状态机管理（NotActive/Active/StopRequest/Stopping）
 
 class ActuatorTest : public QObject
 {

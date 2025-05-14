@@ -21,6 +21,15 @@ class FirmwarePlugin;
 class CompInfoGeneral;
 
 /// Base class for all CompInfo types
+// 1.元数据管理
+// - 存储组件元数据URI（ uriMetaData() ）
+// - 维护CRC校验值（ crcMetaData() ）
+// - 支持元数据回退机制（ uriMetaDataFallback() ）
+// 2.多语言支持
+// - 管理翻译文件URI（ uriTranslation() ）
+// - 支持备用翻译资源加载
+// 3.抽象接口
+// - 强制子类实现JSON元数据解析
 class CompInfo : public QObject
 {
     Q_OBJECT
@@ -50,6 +59,10 @@ public:
 private:
     friend class CompInfoGeneral;
 
+    // Uris：
+    // - 封装组件相关的URI资源路径
+    // - 实现双校验机制（主/备元数据CRC校验）
+    // - 通过 crcMetaDataValid 标志位验证数据完整性
     struct Uris {
         bool                crcMetaDataValid            = false;
         bool                crcMetaDataFallbackValid    = false;

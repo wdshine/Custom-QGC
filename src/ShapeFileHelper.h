@@ -7,6 +7,12 @@
  *
  ****************************************************************************/
 
+//  ShapeFileHelper类：
+//  - 文件类型判断（KML/SHP）
+//  - 提供统一接口给上层调用
+//  - 处理文件过滤逻辑（通过 fileDialogKMLOrSHPFilters 方法）
+//  - 调用SHPFileHelper或KMLHelper完成后续解析
+
 #pragma once
 
 #include <QObject>

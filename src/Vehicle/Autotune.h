@@ -13,6 +13,20 @@
 #include "Vehicle.h"
 #include "MAVLinkProtocol.h"
 
+// Autotune类：
+// 1. 自动调参流程控制
+// - 实现PX4飞控的自动PID调参功能
+// - 封装 MAV_CMD_DO_AUTOTUNE_ENABLE 指令交互 
+// 2. 状态监控
+// - 实时跟踪调参进度（0-100%）
+// - 检测飞控是否支持自动调参功能 
+// 3. MAVLink通信处理
+// - 解析 MAVLINK_MSG_ID_COMMAND_ACK
+// - 处理超时/失败等异常状态 
+// 4. 安全机制
+// - 调参前自动检查无人机状态
+// - 防止在危险状态下启动调参
+
 class Autotune : public QObject
 {
     Q_OBJECT
