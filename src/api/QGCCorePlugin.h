@@ -40,24 +40,24 @@ class QGCCameraControl;
 class QQuickItem;
 class InstrumentValueAreaController;
 
-// QGCCorePluginç±»çš„ä½œç”¨ï¼š
-// 1. ç³»ç»ŸåŸºç¡€æœåŠ¡ç®¡ç†
-// - ä½œä¸ºQGCToolboxçš„æ ¸å¿ƒç»„ä»¶ï¼Œè´Ÿè´£åˆå§‹åŒ–å’Œç®¡ç†è§†é¢‘ç®¡ç†ã€åœ°å›¾å¼•æ“ã€MAVLinkåè®®ç­‰åŸºç¡€æœåŠ¡
-// - é€šè¿‡ createVideoManager / createVideoReceiver ç­‰æ–¹æ³•æ§åˆ¶å¤šåª’ä½“ç»„ä»¶çš„åˆ›å»º
-// 2. é…ç½®ç®¡ç†ç³»ç»Ÿ
-// - é€šè¿‡ settingsPages() æ–¹æ³•æ„å»ºå¹¶ç®¡ç†è®¾ç½®èœå•ç»“æ„ï¼ˆé€šç”¨è®¾ç½®/é€šä¿¡é“¾è·¯/ç¦»çº¿åœ°å›¾ç­‰ï¼‰
-// - æ”¯æŒè‡ªå®šä¹‰è®¾ç½®é¡¹å¯è§æ€§æ§åˆ¶ï¼ˆ overrideSettingsGroupVisibility ï¼‰
-// 3. UIæ¡†æ¶æ§åˆ¶
-// - æ§åˆ¶é«˜çº§UIæ˜¾ç¤ºçŠ¶æ€ï¼ˆshowAdvancedUIå±æ€§ï¼‰
-// - ç®¡ç†è§¦æ‘¸åŒºåŸŸæ˜¾ç¤ºï¼ˆshowTouchAreaså±æ€§ï¼‰
-// - æä¾›è‡ªå®šä¹‰åœ°å›¾é¡¹é›†æˆæ¥å£ï¼ˆcustomMapItemsï¼‰
-// 4. æ‰©å±•æ”¯æŒæœºåˆ¶
-// - é€šè¿‡ mavlinkMessage æ–¹æ³•å®ç°MAVLinkæ¶ˆæ¯æ‹¦æˆªå¤„ç†
-// - æ”¯æŒè‡ªå®šä¹‰å¤æ‚ä»»åŠ¡é¡¹ï¼ˆcomplexMissionItemNamesï¼‰
-// - æä¾›æ’ä»¶åŒ–è§†é¢‘æ¥æ”¶/æ¸²æŸ“æ¥å£ï¼ˆcreateVideoSinkç­‰ï¼‰
-// 5. ç‰ˆæœ¬æ›´æ–°ç®¡ç†
-// - æ§åˆ¶stableç‰ˆæœ¬æ£€æµ‹æœºåˆ¶ï¼ˆstableVersionCheckFileUrlï¼‰
-// - ç®¡ç†é¦–æ¬¡è¿è¡Œæç¤ºç³»ç»Ÿï¼ˆfirstRunPromptç³»åˆ—æ–¹æ³•ï¼‰
+// QGCCorePluginÀàµÄ×÷ÓÃ£º
+// 1. ÏµÍ³»ù´¡·şÎñ¹ÜÀí
+// - ×÷ÎªQGCToolboxµÄºËĞÄ×é¼ş£¬¸ºÔğ³õÊ¼»¯ºÍ¹ÜÀíÊÓÆµ¹ÜÀí¡¢µØÍ¼ÒıÇæ¡¢MAVLinkĞ­ÒéµÈ»ù´¡·şÎñ
+// - Í¨¹ı createVideoManager / createVideoReceiver µÈ·½·¨¿ØÖÆ¶àÃ½Ìå×é¼şµÄ´´½¨
+// 2. ÅäÖÃ¹ÜÀíÏµÍ³
+// - Í¨¹ı settingsPages() ·½·¨¹¹½¨²¢¹ÜÀíÉèÖÃ²Ëµ¥½á¹¹£¨Í¨ÓÃÉèÖÃ/Í¨ĞÅÁ´Â·/ÀëÏßµØÍ¼µÈ£©
+// - Ö§³Ö×Ô¶¨ÒåÉèÖÃÏî¿É¼ûĞÔ¿ØÖÆ£¨ overrideSettingsGroupVisibility £©
+// 3. UI¿ò¼Ü¿ØÖÆ
+// - ¿ØÖÆ¸ß¼¶UIÏÔÊ¾×´Ì¬£¨showAdvancedUIÊôĞÔ£©
+// - ¹ÜÀí´¥ÃşÇøÓòÏÔÊ¾£¨showTouchAreasÊôĞÔ£©
+// - Ìá¹©×Ô¶¨ÒåµØÍ¼Ïî¼¯³É½Ó¿Ú£¨customMapItems£©
+// 4. À©Õ¹Ö§³Ö»úÖÆ
+// - Í¨¹ı mavlinkMessage ·½·¨ÊµÏÖMAVLinkÏûÏ¢À¹½Ø´¦Àí
+// - Ö§³Ö×Ô¶¨Òå¸´ÔÓÈÎÎñÏî£¨complexMissionItemNames£©
+// - Ìá¹©²å¼ş»¯ÊÓÆµ½ÓÊÕ/äÖÈ¾½Ó¿Ú£¨createVideoSinkµÈ£©
+// 5. °æ±¾¸üĞÂ¹ÜÀí
+// - ¿ØÖÆstable°æ±¾¼ì²â»úÖÆ£¨stableVersionCheckFileUrl£©
+// - ¹ÜÀíÊ×´ÎÔËĞĞÌáÊ¾ÏµÍ³£¨firstRunPromptÏµÁĞ·½·¨£©
 
 class QGCCorePlugin : public QGCTool
 {

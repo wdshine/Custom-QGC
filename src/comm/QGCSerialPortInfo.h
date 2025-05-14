@@ -7,6 +7,13 @@
  *
  ****************************************************************************/
 
+//  QGCSerialPortInfo类——用于识别和管理硬件设备的扩展类：
+//  1. 硬件设备识别 通过USB供应商ID/产品ID匹配特定硬件类型（如Pixhawk、SiK Radio等），核心逻辑可见：
+//  2. 刷机支持判断 通过canFlash()方法判断设备是否支持固件升级：
+//  3. Bootloader状态检测 通过isBootloader()判断设备是否处于bootloader模式：
+//  4. 系统端口过滤 通过isSystemPort()排除非飞控设备（如GPS模块、系统串口）。
+//  该类在固件升级流程（PX4FirmwareUpgradeThread）和设备连接（SerialLink）中起核心作用，
+//  通过JSON配置文件 USBBoardInfo.json 维护硬件识别规则，支持动态扩展新设备类型。
 
 #pragma once
 

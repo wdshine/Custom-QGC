@@ -7,6 +7,8 @@
  *
  ****************************************************************************/
 
+ // 与SerialLink、UDPLink共同构成QGC的物理通信层实现，均继承自LinkInterface保持接口统一
+
 #pragma once
 
 #include <QString>

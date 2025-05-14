@@ -62,6 +62,10 @@ static const JoystickConfigController::stateStickPositions stRightStickRight {
     0.25, 0.5, 0.8423, 0.5
 };
 
+// 损坏的通道号，均正常为-1
+// 在校准及使用时屏蔽损坏通道
+const int brokenAxis = -1; // 损坏的通道号，均正常为-1
+
 JoystickConfigController::JoystickConfigController(void)
     : _joystickManager(qgcApp()->toolbox()->joystickManager())
 {
@@ -169,6 +173,9 @@ void JoystickConfigController::_setupCurrentState()
 
 void JoystickConfigController::_axisValueChanged(int axis, int value)
 {
+    // 过滤损坏的通道
+    if (axis == brokenAxis) return;
+    
     if (_validAxis(axis)) {
         // We always update raw values
         _axisRawValue[axis] = value;
@@ -298,6 +305,9 @@ bool JoystickConfigController::_stickSettleComplete(int axis, int value)
 
 void JoystickConfigController::_inputStickDetect(Joystick::AxisFunction_t function, int axis, int value)
 {
+    // 过滤损坏的通道
+    if (axis == brokenAxis) return;
+    
     qCDebug(JoystickConfigControllerLog) << "_inputStickDetect function:axis:value" << function << axis << value;
     
     if (!_validAxis(axis)) {
@@ -343,6 +353,9 @@ void JoystickConfigController::_inputStickDetect(Joystick::AxisFunction_t functi
 
 void JoystickConfigController::_inputStickMin(Joystick::AxisFunction_t function, int axis, int value)
 {
+    // 过滤损坏的通道
+    if (axis == brokenAxis) return;
+    
     qCDebug(JoystickConfigControllerLog) << "_inputStickMin function:axis:value" << function << axis << value;
     if (!_validAxis(axis)) {
         qCWarning(JoystickConfigControllerLog) << "Invalid axis axis:_axisCount" << axis << _axisCount;
@@ -421,6 +434,13 @@ void JoystickConfigController::_resetInternalCalibrationValues()
     // Set all raw axis to not reversed and center point values
     for (int i = 0; i < _axisCount; i++) {
         struct AxisInfo* info = &_rgAxisInfo[i];
+
+        // 在原有重置逻辑前添加损坏通道禁用
+        if(i == brokenAxis) {
+            info->function = Joystick::maxFunction;
+            continue;
+        }
+
         info->function = Joystick::maxFunction;
         info->reversed = false;
         info->deadband = 0;

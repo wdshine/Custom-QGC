@@ -3525,7 +3525,7 @@ Click Ok to start the auto-tuning process.
     <message>
         <location filename="../src/ui/preferences/BluetoothSettings.qml" line="67"/>
         <source>Scan</source>
-        <translation type="unfinished"></translation>
+        <translation>扫描</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences/BluetoothSettings.qml" line="73"/>
@@ -4079,7 +4079,7 @@ Click Ok to start the auto-tuning process.
     <message>
         <location filename="../src/PlanView/CorridorScanEditor.qml" line="19"/>
         <source>Corridor</source>
-        <translation type="unfinished"></translation>
+        <translation>走廊</translation>
     </message>
     <message>
         <location filename="../src/PlanView/CorridorScanEditor.qml" line="38"/>
@@ -16671,7 +16671,7 @@ ROTATION_NONE indicates component points in direction of flight.</source>
     <message>
         <location filename="../src/PlanView/StructureScanEditor.qml" line="115"/>
         <source>Scan</source>
-        <translation type="unfinished"></translation>
+        <translation>扫描</translation>
     </message>
     <message>
         <location filename="../src/PlanView/StructureScanEditor.qml" line="132"/>

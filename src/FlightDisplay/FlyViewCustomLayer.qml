@@ -64,9 +64,9 @@ Item {
         // 控件的位置和尺寸
         width: 130
         height: 130
-        anchors.left: parent.left
+        anchors.right: parent.right
         anchors.bottom: parent.bottom
-        anchors.margins: parentToolInsets.leftEdgeBottomInset + 10  // 以内边距限制小组件位置
+        anchors.margins: 10  // 以内边距限制小组件位置
 
         // 半透明的黑色背景矩形
         Rectangle {

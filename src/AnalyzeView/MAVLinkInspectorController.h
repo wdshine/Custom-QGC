@@ -7,6 +7,32 @@
  *
  ****************************************************************************/
 
+// 1.MAVLinkInspectorController (主控类)
+//  - 维护 QmlObjectListModel _systems 管理所有连接的无人机系统
+//  - 通过 _receiveMessage 接收原始MAVLink消息
+//  - 调用 QGCMAVLinkSystem::append() 存储消息数据
+
+// 2.QGCMAVLinkSystem (系统管理类)
+//  - 通过 _messages 列表存储QGCMAVLinkMessage对象
+//  - 使用 findMessage(uint32_t id, uint8_t cid) 查找特定消息
+//  - 通过 compIDs 属性管理不同组件ID的过滤
+
+// 3.QGCMAVLinkMessage (消息解析类)
+//  - 解析 mavlink_message_t 结构体
+//  - 通过 _fields 列表存储QGCMAVLinkMessageField字段
+//  - 调用 updateFreq() 计算消息频率
+
+// 4.QGCMAVLinkMessageField (字段处理类)
+//  - 通过 addSeries() 与MAVLinkChartController绑定
+//  - 维护 QList<QPointF> _values 存储时序数据
+//  - 触发 valueChanged 信号更新图表显示
+
+// 5.MAVLinkChartController (图表控制类)
+//  - 通过 addSeries(QGCMAVLinkMessageField*, QAbstractSeries*) 绑定数据源
+//  - 调用 updateXRange() 更新时间轴范围
+//  - 通过 _refreshSeries 定时刷新图表数据
+
+
 /// @file
 /// @brief MAVLink message inspector and charting controller
 /// @author Gus Grubba <gus@auterion.com>

@@ -4212,7 +4212,7 @@ Click Ok to start the auto-tuning process.
     <message>
         <location filename="../src/ui/preferences/BluetoothSettings.qml" line="67"/>
         <source>Scan</source>
-        <translation type="unfinished">Scan</translation>
+        <translation>扫描</translation>
     </message>
     <message>
         <location filename="../src/ui/preferences/BluetoothSettings.qml" line="73"/>

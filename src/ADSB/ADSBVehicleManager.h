@@ -7,6 +7,17 @@
  *
  ****************************************************************************/
 
+//  ADS-B：Automatic Dependent Surveillance - Broadcast，广播式自动相关监视
+//  1. 空中交通显示
+//  - 在飞行地图上显示附近 ADS-B 飞机（商业航班/其他无人机）
+//  - 通过 QmlObjectListModel 暴露给 UI 层
+//  2. 防撞预警
+//  - 提供实时交通信息辅助避障决策
+//  3. 态势感知增强
+//  - 显示飞机呼号/高度/速度等关键信息
+//  该文件与 ADSBVehicle.cpp 共同实现完整的 ADS-B 交通显示功能
+//  通过 TCP 连接接收 GDL90 格式数据流，解析后在地图上可视化展示
+
 #pragma once
 
 #include "QGCToolbox.h"

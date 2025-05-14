@@ -7,6 +7,25 @@
  *
  ****************************************************************************/
 
+//  1. Joystick类 (主要输入设备控制器)
+//  - 继承自QThread，作为独立线程运行
+//  - 核心功能：
+//    ?? 管理摇杆的轴/按钮/方向键的原始输入信号（通过 _getAxis 、 _getButton 等虚函数）
+//    ?? 实现校准功能（ Calibration_t 结构体存储校准参数）
+//    ?? 支持多种油门模式（ThrottleMode_t枚举）
+//    ?? 提供信号处理（axisValues信号发送处理后数值）
+//    ?? 支持按钮动作映射（通过 AssignedButtonAction 实现功能绑定）
+//  2. AssignedButtonAction类 (按钮动作绑定)
+//  - 管理单个按钮的功能配置：
+//    ?? 存储按钮对应的动作名称（如相机触发、紧急停止等）
+//    ?? 处理按钮长按重复触发逻辑（通过QElapsedTimer）
+//    ?? 与QML属性绑定实现可视化配置
+//  3. AssignableButtonAction类 (可分配动作容器)
+//  - 维护所有可分配按钮动作的列表：
+//    ?? 包含预定义动作（如"gripperClose"、"emergencyStop"等）
+//    ?? 通过QmlObjectListModel提供QML可访问的数据模型
+//    ?? 管理动作的元数据（如是否支持重复触发）
+
 /// @file
 /// @brief  Joystick Controller
 

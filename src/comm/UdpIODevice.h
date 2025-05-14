@@ -6,7 +6,13 @@
  * COPYING.md in the root of the source code directory.
  *
  ****************************************************************************/
-#pragma once
+
+//  UdpIODevice类：
+//  扩展QUdpSocket的功能，使其在绑定状态下支持逐行读取；
+//  通过缓冲区处理数据包，解决UDP消息边界问题；
+//  提升与QGroundControl中其他基于QIODevice接口组件的兼容性
+
+ #pragma once
 
 #include <QUdpSocket>
 
