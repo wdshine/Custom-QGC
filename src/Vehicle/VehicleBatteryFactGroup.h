@@ -14,6 +14,7 @@
 
 class Vehicle;
 
+// 电池信息管理，收集、更新和暴露电池相关的数据给QML界面，实时显示电池状态，如电压、温度、剩余时间等
 class VehicleBatteryFactGroup : public FactGroup
 {
     Q_OBJECT

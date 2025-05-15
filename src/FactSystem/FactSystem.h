@@ -15,7 +15,7 @@
 
 /// The components of the FactSystem are a Fact which holds an individual value. FactMetaData holds
 /// additional meta data associated with a Fact such as description, min/max ranges and so forth.
-
+// 参数系统的架构级基类，为 Fact / FactGroup / FactMetaData 等核心参数组件提供基础框架支持
 class FactSystem : public QGCTool
 {
     Q_OBJECT

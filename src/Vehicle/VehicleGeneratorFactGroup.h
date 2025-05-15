@@ -3,6 +3,8 @@
 #include "FactGroup.h"
 #include "QGCMAVLink.h"
 
+// 管理发电机相关的各种状态参数
+// 如状态、转速、电池电流、负载电流、功率、总线电压、整流器温度、设定电流、发电机温度、运行时间等
 class VehicleGeneratorFactGroup : public FactGroup
 {
     Q_OBJECT

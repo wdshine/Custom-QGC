@@ -29,6 +29,7 @@ Q_DECLARE_LOGGING_CATEGORY(ParameterManagerDebugCacheFailureLog)
 
 class ParameterEditorController;
 
+// 与飞控通信，管理所有参数的获取、缓存、更新和验证，同时提供接口供其他模块访问和修改参数
 class ParameterManager : public QObject
 {
     Q_OBJECT

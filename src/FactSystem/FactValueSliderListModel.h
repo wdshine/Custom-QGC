@@ -14,6 +14,8 @@
 #include "Fact.h"
 
 /// Provides a list model of values for incrementing/decrementing the value of a Fact
+// 参数编辑界面的滑动条控件底层支持，将 Fact 的数值范围/步长/精度等元数据转换为可视化的滑动选择模型
+// 支撑参数调节界面的动态生成与交互
 class FactValueSliderListModel : public QAbstractListModel
 {
     Q_OBJECT

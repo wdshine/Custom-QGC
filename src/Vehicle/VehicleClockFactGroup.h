@@ -14,6 +14,7 @@
 
 class Vehicle;
 
+// 聚合和管理与时间相关的参数，通过Fact系统将这些参数暴露给QML界面，支持实时更新时间信息
 class VehicleClockFactGroup : public FactGroup
 {
     Q_OBJECT

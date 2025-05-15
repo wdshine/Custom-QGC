@@ -21,15 +21,15 @@ class FirmwarePlugin;
 class CompInfoGeneral;
 
 /// Base class for all CompInfo types
-// 1.å…ƒæ•°æ®ç®¡ç†
-// - å­˜å‚¨ç»„ä»¶å…ƒæ•°æ®URIï¼ˆ uriMetaData() ï¼‰
-// - ç»´æŠ¤CRCæ ¡éªŒå€¼ï¼ˆ crcMetaData() ï¼‰
-// - æ”¯æŒå…ƒæ•°æ®å›é€€æœºåˆ¶ï¼ˆ uriMetaDataFallback() ï¼‰
-// 2.å¤šè¯­è¨€æ”¯æŒ
-// - ç®¡ç†ç¿»è¯‘æ–‡ä»¶URIï¼ˆ uriTranslation() ï¼‰
-// - æ”¯æŒå¤‡ç”¨ç¿»è¯‘èµ„æºåŠ è½½
-// 3.æŠ½è±¡æ¥å£
-// - å¼ºåˆ¶å­ç±»å®ç°JSONå…ƒæ•°æ®è§£æ
+// 1.ÔªÊı¾İ¹ÜÀí
+// - ´æ´¢×é¼şÔªÊı¾İURI£¨ uriMetaData() £©
+// - Î¬»¤CRCĞ£ÑéÖµ£¨ crcMetaData() £©
+// - Ö§³ÖÔªÊı¾İ»ØÍË»úÖÆ£¨ uriMetaDataFallback() £©
+// 2.¶àÓïÑÔÖ§³Ö
+// - ¹ÜÀí·­ÒëÎÄ¼şURI£¨ uriTranslation() £©
+// - Ö§³Ö±¸ÓÃ·­Òë×ÊÔ´¼ÓÔØ
+// 3.³éÏó½Ó¿Ú
+// - Ç¿ÖÆ×ÓÀàÊµÏÖJSONÔªÊı¾İ½âÎö
 class CompInfo : public QObject
 {
     Q_OBJECT
@@ -59,10 +59,10 @@ public:
 private:
     friend class CompInfoGeneral;
 
-    // Urisï¼š
-    // - å°è£…ç»„ä»¶ç›¸å…³çš„URIèµ„æºè·¯å¾„
-    // - å®ç°åŒæ ¡éªŒæœºåˆ¶ï¼ˆä¸»/å¤‡å…ƒæ•°æ®CRCæ ¡éªŒï¼‰
-    // - é€šè¿‡ crcMetaDataValid æ ‡å¿—ä½éªŒè¯æ•°æ®å®Œæ•´æ€§
+    // Uris£º
+    // - ·â×°×é¼şÏà¹ØµÄURI×ÊÔ´Â·¾¶
+    // - ÊµÏÖË«Ğ£Ñé»úÖÆ£¨Ö÷/±¸ÔªÊı¾İCRCĞ£Ñé£©
+    // - Í¨¹ı crcMetaDataValid ±êÖ¾Î»ÑéÖ¤Êı¾İÍêÕûĞÔ
     struct Uris {
         bool                crcMetaDataValid            = false;
         bool                crcMetaDataFallbackValid    = false;

@@ -12,6 +12,8 @@
 
 #include "Vehicle.h"
 
+// 封装和管理与GPS RTK模块相关的实时数据，提供结构化的访问接口，方便在QGC界面中显示和更新
+
 class GPSRTKFactGroup : public FactGroup
 {
     Q_OBJECT

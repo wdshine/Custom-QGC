@@ -12,6 +12,7 @@
 #include "FactGroup.h"
 #include "QGCMAVLink.h"
 
+// 解析湿度传感器的MAVLink数据，将其转换为Fact参数
 class VehicleHygrometerFactGroup : public FactGroup
 {
     Q_OBJECT

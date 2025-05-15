@@ -14,6 +14,16 @@
 #include <QmlObjectListModel.h>
 #include <libevents/libs/cpp/parse/health_and_arming_checks.h>
 
+// HealthAndArmingCheckProblem类：
+// 1. 问题详情存储
+//    - 封装问题的消息/描述/严重等级三要素
+//    - 通过 expanded 属性控制QML界面折叠状态
+// 2. QML数据绑定
+//    - 提供消息(message)/描述(description)/严重程度(severity)的只读属性
+//    - 支持展开状态(expanded)的双向绑定
+// 3. UI交互支持
+//    - 触发 expandedChanged 信号更新界面
+
 class HealthAndArmingCheckProblem : public QObject
 {
     Q_OBJECT
@@ -42,7 +52,16 @@ private:
     bool _expanded{false};
 };
 
-
+// HealthAndArmingCheckReport类：
+// 1. 飞行状态决策
+//    - 评估当前模式下的可解锁/起飞/执行任务状态
+//    - 集成GPS状态显示( gpsState )
+// 2. 问题集合管理
+//    - 存储当前飞行模式相关的健康检查问题
+//    - 自动过滤非当前模式的问题（通过 flightModeGroup ）
+// 3. 事件系统集成
+//    - 处理 events::HealthAndArmingChecks::Results 事件数据
+//    - 动态生成问题列表并触发界面更新信号
 class HealthAndArmingCheckReport : public QObject
 {
     Q_OBJECT

@@ -88,6 +88,7 @@ class ParsedEvent;
 
 Q_DECLARE_LOGGING_CATEGORY(VehicleLog)
 
+// 整合和管理无人机的所有相关数据和功能，与其他管理器类协同工作，处理通信、状态更新、用户输入等任务
 class Vehicle : public FactGroup
 {
     Q_OBJECT

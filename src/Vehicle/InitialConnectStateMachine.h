@@ -18,6 +18,9 @@ Q_DECLARE_LOGGING_CATEGORY(InitialConnectStateMachineLog)
 
 class Vehicle;
 
+// 作为状态机，管理无人机连接初始化的各个步骤，包括获取版本信息、组件信息、参数、任务等
+// 确保连接过程有序进行，并通过信号反馈进度。每个状态对应一个特定的初始化任务
+// 状态转换由基类StateMachine管理，具体的状态处理函数执行实际的通信和数据处理
 class InitialConnectStateMachine : public StateMachine
 {
     Q_OBJECT

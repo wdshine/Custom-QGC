@@ -11,6 +11,7 @@
 
 #include "Fact.h"
 
+// 将全局配置项(如地图类型/单位设置)通过Fact系统统一管理，支撑设置界面的动态生成与持久化存储
 /// @brief A SettingsFact is Fact which holds a QSettings value.
 class SettingsFact : public Fact
 {

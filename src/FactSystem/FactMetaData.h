@@ -19,6 +19,7 @@
 /// Holds the meta data associated with a Fact. This is kept in a separate object from the Fact itself
 /// since you may have multiple instances of the same Fact. But there is only ever one FactMetaData
 /// instance or each Fact.
+// 管理参数的元数据，包括类型定义、单位转换、范围限制、枚举和位掩码支持，以及从JSON加载配置
 class FactMetaData : public QObject
 {
     Q_OBJECT

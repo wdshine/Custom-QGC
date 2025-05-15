@@ -3,6 +3,8 @@
 #include "FactGroup.h"
 #include "QGCMAVLink.h"
 
+// 集成和管理与发动机电子控制相关的各种参数，通过MAVLink协议接收数据
+// 通过Fact系统将数据暴露给QML界面，实现实时监控发动机状态的功能
 class VehicleEFIFactGroup : public FactGroup
 {
     Q_OBJECT

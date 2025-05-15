@@ -12,6 +12,8 @@
 #include "FactGroup.h"
 #include "QGCMAVLink.h"
 
+// 整合来自飞控的GPS相关数据，通过Fact系统将数据暴露给QML界面，通过MAVLink消息确保数据实时更新
+// 管理多个GPS参数，包括位置、精度、卫星状态等，为地面站提供准确的定位信息
 class VehicleGPSFactGroup : public FactGroup
 {
     Q_OBJECT

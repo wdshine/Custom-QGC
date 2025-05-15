@@ -20,6 +20,7 @@ Q_DECLARE_LOGGING_CATEGORY(ImageProtocolManagerLog)
 
 // Supports the Mavlink image transmission protocol (https://mavlink.io/en/services/image_transmission.html).
 // Mainly used by optical flow cameras.
+// 管理图像传输流程，处理协议消息，存储图像数据，并在数据准备好时通知界面更新
 class ImageProtocolManager : public QObject
 {
     Q_OBJECT

@@ -12,6 +12,7 @@
 #include "FactGroup.h"
 #include "QGCMAVLink.h"
 
+// 封装位置和速度的设定值（目标值）
 class VehicleLocalPositionSetpointFactGroup : public FactGroup
 {
     Q_OBJECT

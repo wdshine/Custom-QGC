@@ -14,6 +14,7 @@
 
 class Vehicle;
 
+// 管理飞行控制估计器的各种状态参数
 class VehicleEstimatorStatusFactGroup : public FactGroup
 {
     Q_OBJECT

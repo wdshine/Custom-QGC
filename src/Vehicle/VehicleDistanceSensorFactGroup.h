@@ -14,6 +14,23 @@
 
 class Vehicle;
 
+// VehicleDistanceSensorFactGroup类：
+// 1.多方向传感器参数管理
+// - 继承自 FactGroup 实现参数组化管理
+// - 管理12个关键参数：
+//     - 8个偏航角度参数（Yaw 45°~315°）
+//     - 2个俯仰角度参数（Pitch 90°/270°）
+//     - 最小/最大有效距离参数
+// 2.MAVLink协议集成
+// - 处理距离传感器相关的MAVLink消息
+// - 自动解析传感器方向参数和测距数据
+// 3.参数验证系统
+// - 确保传感器数据在物理限制范围内
+// - 提供参数边界值校验机制
+// 4.QML界面绑定
+// - 通过 rotationYaw45 等属性暴露方向参数
+// - 支持在QML界面动态配置传感器安装方向
+// - 实时显示各方向测距数据
 class VehicleDistanceSensorFactGroup : public FactGroup
 {
     Q_OBJECT

@@ -23,6 +23,8 @@ class RemoteIDSettings;
 class QGCPositionManager;
 
 // Supporting Open Drone ID protocol
+// 实现Open Drone ID协议，确保无人机在飞行过程中发送必要的身份和位置信息，符合不同地区的法规要求
+// 处理MAVLink通信、状态管理、数据验证和定时任务，与QML界面紧密集成，提供实时状态更新和用户交互功能
 class RemoteIDManager : public QObject
 {
     Q_OBJECT

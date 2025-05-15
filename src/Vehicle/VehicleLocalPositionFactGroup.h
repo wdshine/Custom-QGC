@@ -12,6 +12,7 @@
 #include "FactGroup.h"
 #include "QGCMAVLink.h"
 
+// 封装本地位置和速度信息，通过Fact系统提供给QML界面
 class VehicleLocalPositionFactGroup : public FactGroup
 {
     Q_OBJECT

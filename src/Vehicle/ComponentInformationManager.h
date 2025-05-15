@@ -25,6 +25,16 @@ class CompInfo;
 class CompInfoParam;
 class CompInfoGeneral;
 
+// 1.元数据下载流程控制
+// - 实现MAVLink FTP/HTTP协议下载流程
+// - 支持JSON元数据文件(_stateRequestMetaDataJson)和翻译文件(_stateRequestTranslationJson)下载
+// 2.校验机制
+// - 通过CRC校验确保文件完整性(_jsonMetadataCrcValid)
+// - 实现元数据回退机制(_stateRequestMetaDataJsonFallback)
+// 3.多协议支持
+// - 同时支持MAVLink FTP(_uriIsMAVLinkFTP)和HTTP下载
+// - 处理PX4参数服务器和自定义元数据源
+
 class RequestMetaDataTypeStateMachine : public StateMachine
 {
     Q_OBJECT
@@ -77,6 +87,19 @@ private:
     static const StateFn  _rgStates[];
     static const int      _cStates;
 };
+
+// 1.全局元数据管理
+// - 维护组件信息映射表(_compInfoMap)
+// - 支持参数/通用/事件/执行器等组件类型(_stateRequestCompInfoParam等)
+// 2.缓存管理
+// - 集成ComponentInformationCache实现3天缓存策略(cachedFileMaxAgeSec)
+// - 通过文件标签机制(_getFileCacheTag)管理不同组件类型的缓存
+// 3.多语言支持
+// - 使用ComponentInformationTranslation处理元数据本地化
+// - 支持翻译文件与元数据文件的关联下载
+// 4.进度监控
+// - 通过progressUpdate信号反馈整体下载进度
+// - 协调多个组件类型的并行请求
 
 class ComponentInformationManager : public StateMachine
 {

@@ -12,7 +12,7 @@
 #include "FactGroup.h"
 
 #include <QGeoCoordinate>
-
+// 地形相关参数的管理组，提供地形数据块加载状态的参数，并通过QML属性暴露给用户界面访问和显示
 class TerrainFactGroup : public FactGroup
 {
     Q_OBJECT

@@ -16,7 +16,8 @@
 class FactMetaData;
 class Vehicle;
 class FirmwarePlugin;
-
+// 事件处理系统的元数据管理核心，为飞控错误代码、状态事件等提供结构化元数据支持
+// 通过JSON元数据实现不同固件版本事件系统的兼容性适配
 class CompInfoEvents : public CompInfo
 {
     Q_OBJECT

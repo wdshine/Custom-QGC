@@ -17,6 +17,8 @@ class FactMetaData;
 class Vehicle;
 class FirmwarePlugin;
 
+// 解析和执行器相关的JSON元数据文件，确保执行器组件的配置信息正确加载
+// 支持QGroundControl对执行器的动态配置和管理
 class CompInfoActuators : public CompInfo
 {
     Q_OBJECT

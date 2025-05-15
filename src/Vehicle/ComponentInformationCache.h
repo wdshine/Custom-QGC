@@ -26,6 +26,8 @@ Q_DECLARE_LOGGING_CATEGORY(ComponentInformationCacheLog)
  * - only one instance per directory must exist
  * - not thread-safe
  */
+// 组件信息管理系统的缓存层，为 CompInfo 系列类提供持久化缓存支持
+// 减少重复下载PX4/ArduPilot元数据文件的网络请求，提升地面站启动和参数加载速度
 class ComponentInformationCache : public QObject
 {
     Q_OBJECT

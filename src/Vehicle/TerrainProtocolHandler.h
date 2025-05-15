@@ -20,6 +20,19 @@ class TerrainFactGroup;
 
 Q_DECLARE_LOGGING_CATEGORY(TerrainProtocolHandlerLog)
 
+// TerrainProtocolHandler类（地形协议处理器）：
+// 1. MAVLink协议处理
+//    - 处理地形相关MAVLink消息（TERRAIN_REQUEST/TERRAIN_REPORT）
+//    - 通过 mavlinkMessageReceived 方法过滤处理地形协议消息
+// 2. 地形数据发送控制
+//    - 实现地形数据分块传输机制（网格位编码处理）
+//    - 管理当前地形请求状态（_currentTerrainRequest结构体）
+// 3. 与飞行器协同工作
+//    - 关联Vehicle对象实现飞行器通信
+//    - 集成TerrainFactGroup更新地形加载进度（blocksPending/blocksLoaded）
+// 4. 请求响应机制
+//    - 解析地形请求的西南角坐标和网格精度
+//    - 支持地形数据的高效分块传输
 class TerrainProtocolHandler : public QObject
 {
     Q_OBJECT

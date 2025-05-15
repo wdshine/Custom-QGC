@@ -23,7 +23,13 @@ Q_DECLARE_LOGGING_CATEGORY(MAVLinkLogManagerLog)
 class QNetworkAccessManager;
 class MAVLinkLogManager;
 
-//-----------------------------------------------------------------------------
+// MAVLinkLogFiles 类（日志文件模型）
+// 1.日志文件元数据管理
+//   - 封装单个日志文件的名称/大小/上传状态等属性
+//   - 通过 selected 属性实现多选操作
+// 2.QML界面绑定
+//   - 提供 progress 进度属性支持实时进度条显示
+//   - 通过信号机制通知界面状态变更
 class MAVLinkLogFiles : public QObject
 {
     Q_OBJECT
@@ -72,7 +78,13 @@ private:
     bool                _uploaded;
 };
 
-//-----------------------------------------------------------------------------
+// MAVLinkLogProcessor 类（日志处理器）
+// 1.数据流处理
+//   - 实现MAVLink日志协议(ulog)的二进制数据解析
+//   - 处理数据分片( _checkSequence 方法防止丢包)
+// 2.文件存储
+//   - 通过 _writeData 方法持久化日志到本地文件系统
+//   - 自动生成唯一文件名( _makeFilename 方法)
 class MAVLinkLogProcessor
 {
 public:
@@ -100,7 +112,16 @@ private:
     MAVLinkLogFiles*    _record;
 };
 
-//-----------------------------------------------------------------------------
+// MAVLinkLogManager 类（日志系统核心）
+// 1.系统级管理
+//   - 继承QGCTool集成到QGC工具箱体系
+//   - 管理日志文件列表( _logFiles 模型)
+// 2.MAVLink集成
+//   - 处理 MAVLINK_MSG_ID_LOG_DATA 消息
+//   - 实现自动上传/删除策略( enableAutoUpload 属性)
+// 3.用户交互
+//   - 提供 startLogging / stopLogging 等QML调用接口
+//   - 处理用户反馈信息( feedback 属性)
 class MAVLinkLogManager : public QGCTool
 {
     Q_OBJECT

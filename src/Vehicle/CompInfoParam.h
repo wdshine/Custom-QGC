@@ -21,7 +21,7 @@ class Vehicle;
 class FirmwarePlugin;
 
 Q_DECLARE_LOGGING_CATEGORY(CompInfoParamLog)
-
+// 处理飞控组件的参数元数据，包括加载、解析和管理，支持不同固件的参数格式，并通过Qt机制与地面站界面集成
 class CompInfoParam : public CompInfo
 {
     Q_OBJECT

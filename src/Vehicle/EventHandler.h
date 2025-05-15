@@ -20,6 +20,8 @@
 #include <libevents/libs/cpp/parse/parser.h>
 #include <libevents/libs/cpp/generated/events_generated.h>
 
+// 处理来自飞控的事件消息，解析并提供健康状态信息，同时支持元数据动态加载和回调机制
+
 class EventHandler : public QObject
 {
     Q_OBJECT

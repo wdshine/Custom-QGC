@@ -28,6 +28,22 @@ class MAVLinkProtocol;
 
 Q_DECLARE_LOGGING_CATEGORY(MultiVehicleManagerLog)
 
+// MultiVehicleManager类：
+// 1. 多机协同管理
+//    - 维护动态无人机列表（ _vehicles 模型）
+//    - 支持通过vehicleId快速检索（ getVehicleById 方法）
+// 2. 焦点切换机制
+//    - 管理当前活动无人机（ _activeVehicle 指针）
+//    - 通过两阶段切换（ _setActiveVehiclePhase2 ）确保线程安全
+// 3. 离线编辑支持
+//    - 创建虚拟无人机实例用于参数调试
+//    - 支持未连接物理设备时的配置操作
+// 4. 心跳监测系统
+//    - 通过MAVLink协议维持地面站-无人机通信
+//    - 支持心跳开关控制（ gcsHeartBeatEnabled 属性）
+// 5. 空间定位追踪
+//    - 记录最后有效GPS坐标
+//    - 通过 _coordinateChanged 信号更新地图显示
 class MultiVehicleManager : public QGCTool
 {
     Q_OBJECT

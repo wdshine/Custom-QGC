@@ -24,6 +24,8 @@ class Vehicle;
 class LinkManager;
 class VehicleLinkManagerTest;
 
+// 负责多链路的连接管理、状态监控、心跳检测以及通信丢失处理，通过属性暴露给QML界面
+// 确保飞机与地面站之间的通信稳定，并在异常情况下提供及时的状态更新和故障处理
 class VehicleLinkManager : public QObject
 {
     Q_OBJECT

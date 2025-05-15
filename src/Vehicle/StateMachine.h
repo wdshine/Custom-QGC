@@ -11,6 +11,7 @@
 
 #include <QObject>
 
+// 通用的状态机框架，便于子类实现具体状态流转逻辑，封装了状态管理的基本机制，如状态切换、状态函数调用等
 class StateMachine : public QObject
 {
     Q_OBJECT

@@ -14,6 +14,7 @@
 
 class Vehicle;
 
+// 监控各电调的状态，包括转速、电流和电压
 class VehicleEscStatusFactGroup : public FactGroup
 {
     Q_OBJECT

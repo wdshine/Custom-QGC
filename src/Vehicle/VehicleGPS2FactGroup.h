@@ -12,6 +12,8 @@
 #include "VehicleGPSFactGroup.h"
 #include "QGCMAVLink.h"
 
+// VehicleGPSFactGroup处理主GPS数据（MAVLINK_MSG_ID_GPS_RAW_INT）
+// VehicleGPS2FactGroup处理第二GPS数据（MAVLINK_MSG_ID_GPS2_RAW）
 class VehicleGPS2FactGroup : public VehicleGPSFactGroup
 {
     Q_OBJECT

@@ -15,6 +15,7 @@
 #include <QObject>
 
 /// Class which represents sensor info from the SYS_STATUS mavlink message
+// 解析MAVLink的SYS_STATUS消息，管理传感器状态，并通过属性暴露给QML界面
 class SysStatusSensorInfo : public QObject
 {
     Q_OBJECT

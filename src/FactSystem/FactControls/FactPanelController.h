@@ -23,6 +23,8 @@
 Q_DECLARE_LOGGING_CATEGORY(FactPanelControllerLog)
 
 /// FactPanelController is used for handling missing Facts from C++ code.
+// 作为QML面板控制器，处理参数Fact的获取和管理，支持动态加载缺失参数
+// 通过Qt的属性系统和信号槽机制与QML界面交互
 class FactPanelController : public QObject
 {
     Q_OBJECT

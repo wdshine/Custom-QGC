@@ -20,6 +20,8 @@
 class Vehicle;
 
 /// Used to group Facts together into an object hierarachy.
+// 参数系统的组织结构核心，为飞控参数/传感器数据等提供树状管理框架
+// 支撑复杂参数系统的可视化呈现，通过继承机制可实现具体参数组(如GPSRTKFactGroup)的专用处理逻辑
 class FactGroup : public QObject
 {
     Q_OBJECT

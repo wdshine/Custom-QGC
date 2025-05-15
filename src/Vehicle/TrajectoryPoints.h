@@ -15,6 +15,19 @@
 
 class Vehicle;
 
+// TrajectoryPoints类（轨迹点管理）：
+// 1. 轨迹数据存储
+//    - 使用 QVariantList _points 维护轨迹点坐标集合
+//    - 通过 QGeoCoordinate _lastPoint 缓存最后有效坐标点
+// 2. 自动记录机制
+//    - 当飞行器移动时自动添加轨迹点
+//    - 应用双重容差过滤：
+//      - 距离容差（_distanceTolerance=2.0米）
+//      - 方位角容差（_azimuthTolerance=1.5度）
+// 3. 操作控制接口
+// 4. QML界面同步
+//    - 通过 list() 方法暴露轨迹点集合给QML
+//    - 支持动态轨迹可视化更新
 class TrajectoryPoints : public QObject
 {
     Q_OBJECT

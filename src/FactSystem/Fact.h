@@ -19,6 +19,23 @@
 
 class FactValueSliderListModel;
 
+// Fact类：
+// 1. 参数值管理
+//    - 存储原始值( _rawValue )和转换后的值( cookedValue )
+//    - 支持参数验证( validate )和范围限制( clamp )
+// 2. 元数据集成
+//    - 集成 FactMetaData 实现参数范围/单位/描述等约束
+//    - 支持默认值/增量步长/精度控制
+// 3. 类型系统
+//    - 支持布尔/枚举/浮点/位掩码等10+种数据类型
+//    - 自动处理类型转换和格式化
+// 4. 通知机制
+//    - 实现Qt属性系统与QML的双向绑定
+//    - 支持延迟信号发送( sendDeferredValueChangedSignal )
+// 5. 系统集成
+//    - 处理参数修改后的重启需求( vehicleRebootRequired )
+//    - 支持组件ID( componentId )区分不同硬件模块
+
 /// @brief A Fact is used to hold a single value within the system.
 class Fact : public QObject
 {

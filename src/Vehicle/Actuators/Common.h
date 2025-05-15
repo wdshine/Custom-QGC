@@ -7,7 +7,7 @@
  *
  ****************************************************************************/
 
- // å¤šä¸ªç±»ååŒå®žçŽ°æ— äººæœºæ‰§è¡Œå™¨å‚æ•°çš„å¯è§†åŒ–é…ç½®ï¼Œæ”¯æŒåŠ¨æ€ç•Œé¢ç”Ÿæˆã€å‚æ•°æ ¡éªŒå’Œä¸‰ç»´å¸ƒå±€é¢„è§ˆåŠŸèƒ½
+ // ¶à¸öÀàÐ­Í¬ÊµÏÖÎÞÈË»úÖ´ÐÐÆ÷²ÎÊýµÄ¿ÉÊÓ»¯ÅäÖÃ£¬Ö§³Ö¶¯Ì¬½çÃæÉú³É¡¢²ÎÊýÐ£ÑéºÍÈýÎ¬²¼¾ÖÔ¤ÀÀ¹¦ÄÜ
 
 #pragma once
 
@@ -27,7 +27,7 @@ Q_DECLARE_LOGGING_CATEGORY(ActuatorsConfigLog)
 /**
  * Represents a per-channel or per-item vehicle configuration parameter
  */
-// å®šä¹‰æ‰§è¡Œå™¨é…ç½®å‚æ•°çš„å…ƒæ•°æ®ï¼Œæ”¯æŒä½æ“ä½œã€æµ®ç‚¹è½¬å¸ƒå°”ç­‰ç‰¹æ®Šæ˜¾ç¤ºæ–¹å¼ï¼Œç”¨äºŽåŠ¨æ€ç”Ÿæˆå‚æ•°é…ç½®ç•Œé¢
+// ¶¨ÒåÖ´ÐÐÆ÷ÅäÖÃ²ÎÊýµÄÔªÊý¾Ý£¬Ö§³ÖÎ»²Ù×÷¡¢¸¡µã×ª²¼¶ûµÈÌØÊâÏÔÊ¾·½Ê½£¬ÓÃÓÚ¶¯Ì¬Éú³É²ÎÊýÅäÖÃ½çÃæ
 struct Parameter {
     enum class DisplayOption {
         Default,
@@ -126,7 +126,7 @@ private:
 /**
  * Actuator used for rendering
  */
-// å­˜å‚¨æ‰§è¡Œå™¨ï¼ˆç”µæœºã€èˆµæœºï¼‰çš„å‡ ä½•å¸ƒå±€ä¿¡æ¯ï¼Œç”¨äºŽå¯è§†åŒ–å¼•æ“Žæ¸²æŸ“æ— äººæœºç»“æž„
+// ´æ´¢Ö´ÐÐÆ÷£¨µç»ú¡¢¶æ»ú£©µÄ¼¸ºÎ²¼¾ÖÐÅÏ¢£¬ÓÃÓÚ¿ÉÊÓ»¯ÒýÇæäÖÈ¾ÎÞÈË»ú½á¹¹
 struct ActuatorGeometry
 {
     enum class Type {

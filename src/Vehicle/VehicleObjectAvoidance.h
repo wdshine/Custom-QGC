@@ -17,6 +17,7 @@
 
 class Vehicle;
 
+// 接收和处理障碍物距离数据，管理避障功能的状态
 class VehicleObjectAvoidance : public QObject
 {
     Q_OBJECT

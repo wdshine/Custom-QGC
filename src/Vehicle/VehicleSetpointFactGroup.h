@@ -12,6 +12,10 @@
 #include "FactGroup.h"
 #include "QGCMAVLink.h"
 
+// VehicleSetpointFactGroup类（飞行器设定点参数组）：
+// - 管理6个飞行控制设定点参数：
+//   - 姿态角设定（roll/pitch/yaw）
+//   - 角速率设定（rollRate/pitchRate/yawRate）
 class VehicleSetpointFactGroup : public FactGroup
 {
     Q_OBJECT
