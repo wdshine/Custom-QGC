@@ -18,11 +18,11 @@ Q_DECLARE_LOGGING_CATEGORY(StandardModesLog)
 
 class Vehicle;
 
-// StandardModes类（标准飞行模式管理）：
-// - 实现飞行模式的标准化映射（PX4/ArduPilot等飞控模式值的统一转换）
-// - 通过MAVLink协议获取/设置飞控支持的飞行模式列表
-// - 管理模式名称唯一性校验（自动处理重复名称）
-// - 提供飞行模式的中英文名称转换服务
+// StandardModes�ࣨ��׼����ģʽ��������
+// - ʵ�ַ���ģʽ�ı�׼��ӳ�䣨PX4/ArduPilot�ȷɿ�ģʽֵ��ͳһת����
+// - ͨ��MAVLinkЭ���ȡ/���÷ɿ�֧�ֵķ���ģʽ�б�
+// - ����ģʽ����Ψһ��У�飨�Զ������ظ����ƣ�
+// - �ṩ����ģʽ����Ӣ������ת������
 class StandardModes : public QObject
 {
 Q_OBJECT

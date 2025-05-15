@@ -56,7 +56,7 @@ Item {
 
     // 新增飞机状态显示
     Item {
-        id: quadcopterStatus
+        id:             quadcopterStatus
 
         // 使用 QGCToolInsets 来限制位置和大小
         property var parentToolInsets: _toolInsets  // 获取父控件的内边距信息
@@ -99,6 +99,18 @@ Item {
             id: quadcopterItem
             width: parent.width
             height: parent.height
+            property var vehicle:   QGroundControl.multiVehicleManager.activeVehicle
+
+            // 监听 activeVehicle 变化
+            Connections {
+                target: QGroundControl.multiVehicleManager
+                onActiveVehicleChanged: {
+                console.log("Active vehicle changed")
+                // 这里可以添加当 vehicle 变化时需要执行的代码
+                    
+                }
+            }
+
 
             // 工作状态显示
             property string bodyStatus: "normal"
@@ -107,6 +119,15 @@ Item {
             property string motor3Status: "error"
             property string motor4Status: "normal"
 
+            // 新增颜色定义
+            QtObject {
+                id: stateColors
+                readonly property color normal: quadcopterItem.vehicle && quadcopterItem.vehicle.sub ? "#87CEFA" : "#90EE90"
+                readonly property color warning: "#FFFF00"
+                readonly property color error: "#FF0000"
+                readonly property color inactive: "#80FFFFFF"
+            }
+
             // 中心机身（长方形）
             Rectangle {
                 id: body
@@ -114,10 +135,10 @@ Item {
                 height: 40
                 radius: 5
                 z:2
-                color: quadcopterItem.bodyStatus === "inactive" ? "rgba(255, 255, 255, 0.5)" :
-                       quadcopterItem.bodyStatus === "normal" ? "lightgreen" :
-                       quadcopterItem.bodyStatus === "warning" ? "yellow" :
-                       quadcopterItem.bodyStatus === "error" ? "red" : "transparent"
+                color: quadcopterItem.bodyStatus === "inactive" ? stateColors.inactive :
+                       quadcopterItem.bodyStatus === "normal" ? stateColors.normal :
+                       quadcopterItem.bodyStatus === "warning" ? stateColors.warning :
+                       quadcopterItem.bodyStatus === "error" ? stateColors.error : "transparent"
                 anchors.centerIn: parent
 
                 // 添加鼠标事件拦截区域
@@ -144,10 +165,10 @@ Item {
                 height: 20
                 radius: 10 // 设置圆角来模拟圆形
                 z:2 // 覆盖住线条
-                color: quadcopterItem.motor1Status === "inactive" ? "rgba(255, 255, 255, 0.5)" :
-                       quadcopterItem.motor1Status === "normal" ? "lightgreen" :
-                       quadcopterItem.motor1Status === "warning" ? "yellow" :
-                       quadcopterItem.motor1Status === "error" ? "red" : "transparent"
+                color: quadcopterItem.motor1Status === "inactive" ? stateColors.inactive:
+                       quadcopterItem.motor1Status === "normal" ? stateColors.normal:
+                       quadcopterItem.motor1Status === "warning" ? stateColors.warning:
+                       quadcopterItem.motor1Status === "error" ? stateColors.error : "transparent"
                 anchors.top: parent.top
                 anchors.left: parent.left
                 anchors.margins: 16
@@ -175,10 +196,10 @@ Item {
                 height: 20
                 radius: 10 // 设置圆角来模拟圆形
                 z:2
-                color: quadcopterItem.motor2Status === "inactive" ? "rgba(255, 255, 255, 0.5)" :
-                       quadcopterItem.motor2Status === "normal" ? "lightgreen" :
-                       quadcopterItem.motor2Status === "warning" ? "yellow" :
-                       quadcopterItem.motor2Status === "error" ? "red" : "transparent"
+                color: quadcopterItem.motor2Status === "inactive" ? stateColors.inactive :
+                       quadcopterItem.motor2Status === "normal" ? stateColors.normal :
+                       quadcopterItem.motor2Status === "warning" ? stateColors.warning :
+                       quadcopterItem.motor2Status === "error" ? stateColors.error : "transparent"
                 anchors.top: parent.top
                 anchors.right: parent.right
                 anchors.margins: 16
@@ -206,10 +227,10 @@ Item {
                 height: 20
                 radius: 10 // 设置圆角来模拟圆形
                 z:2
-                color: quadcopterItem.motor3Status === "inactive" ? "rgba(255, 255, 255, 0.5)" :
-                       quadcopterItem.motor3Status === "normal" ? "lightgreen" :
-                       quadcopterItem.motor3Status === "warning" ? "yellow" :
-                       quadcopterItem.motor3Status === "error" ? "red" : "transparent"
+                color: quadcopterItem.motor3Status === "inactive" ? stateColors.inactive :
+                       quadcopterItem.motor3Status === "normal" ? stateColors.normal :
+                       quadcopterItem.motor3Status === "warning" ? stateColors.warning :
+                       quadcopterItem.motor3Status === "error" ? stateColors.error : "transparent"
                 anchors.bottom: parent.bottom
                 anchors.left: parent.left
                 anchors.margins: 16
@@ -237,10 +258,10 @@ Item {
                 height: 20
                 radius: 10 // 设置圆角来模拟圆形
                 z:2
-                color: quadcopterItem.motor4Status === "inactive" ? "rgba(255, 255, 255, 0.5)" :
-                       quadcopterItem.motor4Status === "normal" ? "lightgreen" :
-                       quadcopterItem.motor4Status === "warning" ? "yellow" :
-                       quadcopterItem.motor4Status === "error" ? "red" : "transparent"
+                color: quadcopterItem.motor4Status === "inactive" ? stateColors.inactive :
+                       quadcopterItem.motor4Status === "normal" ? stateColors.normal :
+                       quadcopterItem.motor4Status === "warning" ? stateColors.warning :
+                       quadcopterItem.motor4Status === "error" ? stateColors.error : "transparent"
                 anchors.bottom: parent.bottom
                 anchors.right: parent.right
                 anchors.margins: 16
