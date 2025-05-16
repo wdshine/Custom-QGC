@@ -8,6 +8,11 @@
 ################################################################################
 
 CONFIG += warn_off
+
+#-------------------关闭自定义构建---------------------
+CONFIG += QGC_DISABLE_CUSTOM_BUILD
+
+
 QMAKE_CXXFLAGS += -D_CRT_SECURE_NO_WARNINGS
 
 

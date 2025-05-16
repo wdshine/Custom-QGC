@@ -96,8 +96,8 @@ Item {
         // 控件的位置和尺寸
         width: 130
         height: 130
-        anchors.left: parent.left
-        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+        anchors.top: parent.top
         anchors.margins: 10  // 以内边距限制小组件位置
 
         // 半透明的黑色背景矩形
@@ -385,73 +385,73 @@ Item {
 
     //-------------------------------------------------------------------------
     //-- Heading Indicator
-    Rectangle {
-        id:                         compassBar
-        height:                     ScreenTools.defaultFontPixelHeight * 1.5
-        width:                      ScreenTools.defaultFontPixelWidth  * 50
-        color:                      "#DEDEDE"
-        radius:                     2
-        clip:                       true
-        anchors.top:                headingIndicator.bottom
-        anchors.topMargin:          -headingIndicator.height / 2
-        anchors.horizontalCenter:   parent.horizontalCenter
-        Repeater {
-            model: 720
-            QGCLabel {
-                function _normalize(degrees) {
-                    var a = degrees % 360
-                    if (a < 0) a += 360
-                    return a
-                }
-                property int _startAngle: modelData + 180 + _heading
-                property int _angle: _normalize(_startAngle)
-                anchors.verticalCenter: parent.verticalCenter
-                x:              visible ? ((modelData * (compassBar.width / 360)) - (width * 0.5)) : 0
-                visible:        _angle % 45 == 0
-                color:          "#75505565"
-                font.pointSize: ScreenTools.smallFontPointSize
-                text: {
-                    switch(_angle) {
-                    case 0:     return "N"
-                    case 45:    return "NE"
-                    case 90:    return "E"
-                    case 135:   return "SE"
-                    case 180:   return "S"
-                    case 225:   return "SW"
-                    case 270:   return "W"
-                    case 315:   return "NW"
-                    }
-                    return ""
-                }
-            }
-        }
-    }
-    Rectangle {
-        id:                         headingIndicator
-        height:                     ScreenTools.defaultFontPixelHeight
-        width:                      ScreenTools.defaultFontPixelWidth * 4
-        color:                      qgcPal.windowShadeDark
-        anchors.top:                parent.top
-        anchors.topMargin:          _toolsMargin
-        anchors.horizontalCenter:   parent.horizontalCenter
-        QGCLabel {
-            text:                   _heading
-            color:                  qgcPal.text
-            font.pointSize:         ScreenTools.smallFontPointSize
-            anchors.centerIn:       parent
-        }
-    }
-    Image {
-        id:                         compassArrowIndicator
-        height:                     _indicatorsHeight
-        width:                      height
-        source:                     "/custom/img/compass_pointer.svg"
-        fillMode:                   Image.PreserveAspectFit
-        sourceSize.height:          height
-        anchors.top:                compassBar.bottom
-        anchors.topMargin:          -height / 2
-        anchors.horizontalCenter:   parent.horizontalCenter
-    }
+    // Rectangle {
+    //     id:                         compassBar
+    //     height:                     ScreenTools.defaultFontPixelHeight * 1.5
+    //     width:                      ScreenTools.defaultFontPixelWidth  * 50
+    //     color:                      "#DEDEDE"
+    //     radius:                     2
+    //     clip:                       true
+    //     anchors.top:                headingIndicator.bottom
+    //     anchors.topMargin:          -headingIndicator.height / 2
+    //     anchors.horizontalCenter:   parent.horizontalCenter
+    //     Repeater {
+    //         model: 720
+    //         QGCLabel {
+    //             function _normalize(degrees) {
+    //                 var a = degrees % 360
+    //                 if (a < 0) a += 360
+    //                 return a
+    //             }
+    //             property int _startAngle: modelData + 180 + _heading
+    //             property int _angle: _normalize(_startAngle)
+    //             anchors.verticalCenter: parent.verticalCenter
+    //             x:              visible ? ((modelData * (compassBar.width / 360)) - (width * 0.5)) : 0
+    //             visible:        _angle % 45 == 0
+    //             color:          "#75505565"
+    //             font.pointSize: ScreenTools.smallFontPointSize
+    //             text: {
+    //                 switch(_angle) {
+    //                 case 0:     return "N"
+    //                 case 45:    return "NE"
+    //                 case 90:    return "E"
+    //                 case 135:   return "SE"
+    //                 case 180:   return "S"
+    //                 case 225:   return "SW"
+    //                 case 270:   return "W"
+    //                 case 315:   return "NW"
+    //                 }
+    //                 return ""
+    //             }
+    //         }
+    //     }
+    // }
+    // Rectangle {
+    //     id:                         headingIndicator
+    //     height:                     ScreenTools.defaultFontPixelHeight
+    //     width:                      ScreenTools.defaultFontPixelWidth * 4
+    //     color:                      qgcPal.windowShadeDark
+    //     anchors.top:                parent.top
+    //     anchors.topMargin:          _toolsMargin
+    //     anchors.horizontalCenter:   parent.horizontalCenter
+    //     QGCLabel {
+    //         text:                   _heading
+    //         color:                  qgcPal.text
+    //         font.pointSize:         ScreenTools.smallFontPointSize
+    //         anchors.centerIn:       parent
+    //     }
+    // }
+    // Image {
+    //     id:                         compassArrowIndicator
+    //     height:                     _indicatorsHeight
+    //     width:                      height
+    //     source:                     "/custom/img/compass_pointer.svg"
+    //     fillMode:                   Image.PreserveAspectFit
+    //     sourceSize.height:          height
+    //     anchors.top:                compassBar.bottom
+    //     anchors.topMargin:          -height / 2
+    //     anchors.horizontalCenter:   parent.horizontalCenter
+    // }
 
     Rectangle {
         id:                     compassBackground
