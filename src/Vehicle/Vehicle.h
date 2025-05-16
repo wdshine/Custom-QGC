@@ -107,6 +107,7 @@ public:
             int                     defaultComponentId,
             MAV_AUTOPILOT           firmwareType,
             MAV_TYPE                vehicleType,
+            // indicator                vehicleType,
             FirmwarePluginManager*  firmwarePluginManager,
             JoystickManager*        joystickManager);
 

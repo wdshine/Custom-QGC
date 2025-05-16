@@ -28,6 +28,7 @@ Row {
         toolIndicatorsRepeater.dropMessageIndicatorTool();
     }
 
+    // 通过 QGroundControl.corePlugin.toolBarIndicators 加载核心插件定义的动态指示器
     Repeater {
         id:     appRepeater
         model:  QGroundControl.corePlugin.toolBarIndicators
@@ -39,6 +40,8 @@ Row {
         }
     }
 
+    // 绑定当前激活载具的 toolIndicators 属性
+    // 提供消息指示器处理接口 dropMessageIndicatorTool()
     Repeater {
         id:     toolIndicatorsRepeater
         model:  _activeVehicle ? _activeVehicle.toolIndicators : []
@@ -60,6 +63,7 @@ Row {
         }
     }
 
+    // 绑定当前激活载具的 toolIndicators 属性
     Repeater {
         model: _activeVehicle ? _activeVehicle.modeIndicators : []
         Loader {
@@ -67,6 +71,7 @@ Row {
             anchors.bottom:     parent.bottom
             source:             modelData
             visible:            item.showIndicator
+            // visible:            false
         }
     }
 }
