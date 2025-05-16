@@ -89,6 +89,300 @@ Item {
         property real leftEdgeCenterInset: visible ? x + width : 0
     }
 
+    // 飞机状态显示
+    Item {
+        id:             quadcopterStatus
+
+        // 控件的位置和尺寸
+        width: 130
+        height: 130
+        anchors.left: parent.left
+        anchors.bottom: parent.bottom
+        anchors.margins: 10  // 以内边距限制小组件位置
+
+        // 半透明的黑色背景矩形
+        Rectangle {
+            id: background
+            width: parent.width
+            height: parent.height
+            color: "black"
+            opacity: 0.7
+            radius: 5
+
+            // 添加鼠标事件拦截区域
+            MouseArea {
+                id: backgroundBlocker
+                anchors.fill: parent
+                acceptedButtons: Qt.AllButtons
+                hoverEnabled: true
+                propagateComposedEvents: false  // 关键：阻止事件传递
+                onWheel: wheel.accepted = true // 阻止滚轮事件穿透
+
+                // 可选：添加点击反馈效果
+                onClicked: {
+                    console.log("background area clicked")
+                    // 可以在此处添加点击处理逻辑
+                }
+            }
+        }
+
+        // 无人机状态显示区域
+        Item {
+            id: quadcopterItem
+            width: parent.width
+            height: parent.height
+
+            // 工作状态显示
+            property string bodyStatus: "normal"
+            property string motor1Status: "normal"
+            property string motor2Status: "warning"
+            property string motor3Status: "error"
+            property string motor4Status: "normal"
+
+            // 新增颜色定义
+            QtObject {
+                id: stateColors               
+                readonly property color normal: _activeVehicle && _activeVehicle.sub ? "#87CEFA" : "#90EE90"
+                readonly property color warning: "#FFFF00"
+                readonly property color error: "#FF0000"
+                readonly property color inactive: "#80FFFFFF"
+            }
+
+            // 中心机身（长方形）
+            Rectangle {
+                id: body
+                width: 40
+                height: 40
+                radius: 5
+                z:2
+                color: quadcopterItem.bodyStatus === "inactive" ? stateColors.inactive :
+                       quadcopterItem.bodyStatus === "normal" ? stateColors.normal :
+                       quadcopterItem.bodyStatus === "warning" ? stateColors.warning :
+                       quadcopterItem.bodyStatus === "error" ? stateColors.error : "transparent"
+                anchors.centerIn: parent
+
+                // 添加鼠标事件拦截区域
+                MouseArea {
+                    id: bodyBlocker
+                    anchors.fill: parent
+                    acceptedButtons: Qt.AllButtons
+                    hoverEnabled: true
+                    propagateComposedEvents: false  // 关键：阻止事件传递
+                    onWheel: wheel.accepted = true // 阻止滚轮事件穿透
+
+                    // 可选：添加点击反馈效果
+                    onClicked: {
+                        console.log("body area clicked")
+                        // 可以在此处添加点击处理逻辑
+                    }
+                }
+            }
+
+            // 四个电机（使用 Rectangle 替代 Ellipse）
+            Rectangle {
+                id: motor1
+                width: 20
+                height: 20
+                radius: 10 // 设置圆角来模拟圆形
+                z:2 // 覆盖住线条
+                color: quadcopterItem.motor1Status === "inactive" ? stateColors.inactive:
+                       quadcopterItem.motor1Status === "normal" ? stateColors.normal:
+                       quadcopterItem.motor1Status === "warning" ? stateColors.warning:
+                       quadcopterItem.motor1Status === "error" ? stateColors.error : "transparent"
+                anchors.top: parent.top
+                anchors.left: parent.left
+                anchors.margins: 16
+
+                // 添加鼠标事件拦截区域
+                MouseArea {
+                    id: motor1Blocker
+                    anchors.fill: parent
+                    acceptedButtons: Qt.AllButtons
+                    hoverEnabled: true
+                    propagateComposedEvents: false  // 关键：阻止事件传递
+                    onWheel: wheel.accepted = true // 阻止滚轮事件穿透
+
+                    // 可选：添加点击反馈效果
+                    onClicked: {
+                        console.log("motor1 area clicked")
+                        // 可以在此处添加点击处理逻辑
+                    }
+                }
+            }
+
+            Rectangle {
+                id: motor2
+                width: 20
+                height: 20
+                radius: 10 // 设置圆角来模拟圆形
+                z:2
+                color: quadcopterItem.motor2Status === "inactive" ? stateColors.inactive :
+                       quadcopterItem.motor2Status === "normal" ? stateColors.normal :
+                       quadcopterItem.motor2Status === "warning" ? stateColors.warning :
+                       quadcopterItem.motor2Status === "error" ? stateColors.error : "transparent"
+                anchors.top: parent.top
+                anchors.right: parent.right
+                anchors.margins: 16
+
+                // 添加鼠标事件拦截区域
+                MouseArea {
+                    id: motor2Blocker
+                    anchors.fill: parent
+                    acceptedButtons: Qt.AllButtons
+                    hoverEnabled: true
+                    propagateComposedEvents: false  // 关键：阻止事件传递
+                    onWheel: wheel.accepted = true // 阻止滚轮事件穿透
+
+                    // 可选：添加点击反馈效果
+                    onClicked: {
+                        console.log("motor2 area clicked")
+                        // 可以在此处添加点击处理逻辑
+                    }
+                }
+            }
+
+            Rectangle {
+                id: motor3
+                width: 20
+                height: 20
+                radius: 10 // 设置圆角来模拟圆形
+                z:2
+                color: quadcopterItem.motor3Status === "inactive" ? stateColors.inactive :
+                       quadcopterItem.motor3Status === "normal" ? stateColors.normal :
+                       quadcopterItem.motor3Status === "warning" ? stateColors.warning :
+                       quadcopterItem.motor3Status === "error" ? stateColors.error : "transparent"
+                anchors.bottom: parent.bottom
+                anchors.left: parent.left
+                anchors.margins: 16
+
+                // 添加鼠标事件拦截区域
+                MouseArea {
+                    id: motor3Blocker
+                    anchors.fill: parent
+                    acceptedButtons: Qt.AllButtons
+                    hoverEnabled: true
+                    propagateComposedEvents: false  // 关键：阻止事件传递
+                    onWheel: wheel.accepted = true // 阻止滚轮事件穿透
+
+                    // 可选：添加点击反馈效果
+                    onClicked: {
+                        console.log("motor3 area clicked")
+                        // 可以在此处添加点击处理逻辑
+                    }
+                }
+            }
+
+            Rectangle {
+                id: motor4
+                width: 20
+                height: 20
+                radius: 10 // 设置圆角来模拟圆形
+                z:2
+                color: quadcopterItem.motor4Status === "inactive" ? stateColors.inactive :
+                       quadcopterItem.motor4Status === "normal" ? stateColors.normal :
+                       quadcopterItem.motor4Status === "warning" ? stateColors.warning :
+                       quadcopterItem.motor4Status === "error" ? stateColors.error : "transparent"
+                anchors.bottom: parent.bottom
+                anchors.right: parent.right
+                anchors.margins: 16
+
+                // 添加鼠标事件拦截区域
+                MouseArea {
+                    id: motor4Blocker
+                    anchors.fill: parent
+                    acceptedButtons: Qt.AllButtons
+                    hoverEnabled: true
+                    propagateComposedEvents: false  // 关键：阻止事件传递
+                    onWheel: wheel.accepted = true // 阻止滚轮事件穿透
+
+                    // 可选：添加点击反馈效果
+                    onClicked: {
+                        console.log("motor4 area clicked")
+                        // 可以在此处添加点击处理逻辑
+                    }
+                }
+            }
+
+            // 连接机身和电机的线条
+            // 连接机身和电机1
+            Rectangle {
+                id: line1
+                width: 4
+                color: "white"
+                readonly property real bodyCenterX: body.x + body.width/2
+                readonly property real bodyCenterY: body.y + body.height/2
+                readonly property real motorCenterX: motor1.x + motor1.width/2
+                readonly property real motorCenterY: motor1.y + motor1.height/2
+
+                height: Math.sqrt(Math.pow(motorCenterX - bodyCenterX, 2) +
+                                 Math.pow(motorCenterY - bodyCenterY, 2))
+                rotation: Math.atan2(motorCenterY - bodyCenterY,
+                                    motorCenterX - bodyCenterX) * 180 / Math.PI
+                x: bodyCenterX - width/2
+                y: bodyCenterY
+                transformOrigin: Item.Top
+            }
+
+            // 连接机身和电机2
+            Rectangle {
+                id: line2
+                width: 4
+                color: "white"
+                readonly property real bodyCenterX: body.x + body.width/2
+                readonly property real bodyCenterY: body.y + body.height/2
+                readonly property real motorCenterX: motor2.x + motor2.width/2
+                readonly property real motorCenterY: motor2.y + motor2.height/2
+
+                height: Math.sqrt(Math.pow(motorCenterX - bodyCenterX, 2) +
+                                 Math.pow(motorCenterY - bodyCenterY, 2))
+                rotation: Math.atan2(motorCenterY - bodyCenterY,
+                                    motorCenterX - bodyCenterX) * 180 / Math.PI
+                x: bodyCenterX - width/2
+                y: bodyCenterY
+                transformOrigin: Item.Top
+            }
+
+            // 连接机身和电机3
+            Rectangle {
+                id: line3
+                width: 4
+                color: "white"
+                readonly property real bodyCenterX: body.x + body.width/2
+                readonly property real bodyCenterY: body.y + body.height/2
+                readonly property real motorCenterX: motor3.x + motor3.width/2
+                readonly property real motorCenterY: motor3.y + motor3.height/2
+
+                height: Math.sqrt(Math.pow(motorCenterX - bodyCenterX, 2) +
+                                 Math.pow(motorCenterY - bodyCenterY, 2))
+                rotation: Math.atan2(motorCenterY - bodyCenterY,
+                                    motorCenterX - bodyCenterX) * 180 / Math.PI
+                x: bodyCenterX - width/2
+                y: bodyCenterY
+                transformOrigin: Item.Top
+            }
+
+            // 连接机身和电机4
+            Rectangle {
+                id: line4
+                width: 4
+                color: "white"
+                readonly property real bodyCenterX: body.x + body.width/2
+                readonly property real bodyCenterY: body.y + body.height/2
+                readonly property real motorCenterX: motor4.x + motor4.width/2
+                readonly property real motorCenterY: motor4.y + motor4.height/2
+
+                height: Math.sqrt(Math.pow(motorCenterX - bodyCenterX, 2) +
+                                 Math.pow(motorCenterY - bodyCenterY, 2))
+                rotation: Math.atan2(motorCenterY - bodyCenterY,
+                                    motorCenterX - bodyCenterX) * 180 / Math.PI
+                x: bodyCenterX - width/2
+                y: bodyCenterY
+                transformOrigin: Item.Top
+            }
+        }
+
+    }
+
     //-------------------------------------------------------------------------
     //-- Heading Indicator
     Rectangle {
